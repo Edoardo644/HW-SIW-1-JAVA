@@ -7,20 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-@Entity	
-public class Società {
+@Entity
+public class Societa{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
-	
+
 	private String ragioneSociale;
-	
-	//Quando rendo persistente una società è utile avere subito il suo indirizzo e quindi rimuoverlo in caso di fallimento( o cose simili)
-	//della società. Il merge risulta utile nel momento in cui la società cambia indirizzo
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,CascadeType.MERGE})
+
+	// Quando rendo persistente una societï¿½ ï¿½ utile avere subito il suo indirizzo e
+	// quindi rimuoverlo in caso di fallimento( o cose simili)
+	// della societï¿½. Il merge risulta utile nel momento in cui la societï¿½ cambia
+	// indirizzo
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE })
 	private Indirizzo indirizzo;
-	
+
 	private String numeroCell;
 
 	public Long getId() {
@@ -54,7 +56,5 @@ public class Società {
 	public void setNumeroCell(String numeroCell) {
 		this.numeroCell = numeroCell;
 	}
-	
-	
 
 }

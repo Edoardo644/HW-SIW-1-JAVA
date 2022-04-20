@@ -14,30 +14,31 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Allievo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
-	
+
 	private String nome;
-	
+
 	private String cognome;
-	
+
 	private LocalDate dataNascita;
-	
+
 	private String luogoNascita;
-	
+
 	private Long numeromatricola;
-	
+
 	private String email;
-	
+
 	@ManyToMany(mappedBy = "allieviCorso", fetch = FetchType.EAGER)
 	private List<Corso> corsiAllievo;
-	
-	//È utile avere subito persistente l'azienda dove lavora l'allievo ed è utile avere il merge nel caso in cui l'allievo cambi
-	//società
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private Società società;
+
+	// ï¿½ utile avere subito persistente l'azienda dove lavora l'allievo ed ï¿½ utile
+	// avere il merge nel caso in cui l'allievo cambi
+	// societï¿½
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Societa societa;
 
 	public Long getId() {
 		return Id;
@@ -103,12 +104,12 @@ public class Allievo {
 		this.corsiAllievo = corsiAllievo;
 	}
 
-	public Società getSocietà() {
-		return società;
+	public Societa getSocieta() {
+		return societa;
 	}
 
-	public void setSocietà(Società società) {
-		this.società = società;
+	public void setSocieta(Societa societa) {
+		this.societa = societa;
 	}
-	
+
 }
