@@ -25,12 +25,13 @@ public class Corso {
 	
 	private Long DurataMesi;
 	
-	@ManyToOne
+	//È utile avere un cascade sul docente in quanto potrebbe essere importante per il sistema sapere per ogni corso il docente di riferimento
+	//e se questo cambi nel tempo
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Docente docente;
 	
-	//È utile avere una lista persistente di tutti gli allievi affiliati a un corso direttamente quando inserisco un corso nel DB 
-	//poiché non avrebbe molto senso un Corso senza Allievi
-	@ManyToMany(cascade = {CascadeType.PERSIST})
+	
+	@ManyToMany
 	private List<Allievo> allieviCorso;
 
 	public Long getId() {

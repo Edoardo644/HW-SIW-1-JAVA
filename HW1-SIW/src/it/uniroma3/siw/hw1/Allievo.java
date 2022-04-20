@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +30,7 @@ public class Allievo {
 
 	private String email;
 
-	@ManyToMany(mappedBy = "allieviCorso", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "allieviCorso"/*, fetch = FetchType.EAGER*/)
 	private List<Corso> corsiAllievo;
 
 	// � utile avere subito persistente l'azienda dove lavora l'allievo ed � utile
