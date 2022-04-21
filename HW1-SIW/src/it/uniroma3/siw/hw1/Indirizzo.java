@@ -13,7 +13,7 @@ public class Indirizzo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String via;
 	
-	private Long numCivico;
+	private String numCivico;
 	
 	private String comune;
 	
@@ -29,11 +29,11 @@ public class Indirizzo {
 		this.via = via;
 	}
 
-	public Long getNumCivico() {
+	public String getNumCivico() {
 		return numCivico;
 	}
 
-	public void setNumCivico(Long numCivico) {
+	public void setNumCivico(String numCivico) {
 		this.numCivico = numCivico;
 	}
 

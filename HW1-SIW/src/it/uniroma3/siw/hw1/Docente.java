@@ -1,10 +1,12 @@
 package it.uniroma3.siw.hw1;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,14 @@ import javax.persistence.OneToMany;
 
 @Entity	
 public class Docente {
+	
+	
+	
+	public Docente(){
+		this.corsiDocente = new ArrayList<Corso>();
+	}
+	
+
 	
 	
 	@Id
@@ -31,7 +41,7 @@ public class Docente {
 	
 	//Potrebbe avere senso inserire il cascade poichè posso avere persistenti tutti i corsi del professore  e il merge 
 	// perché così si può aggiornare direttamente nel caso di un corso che cambia docente
-	@OneToMany(mappedBy = "docente", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(mappedBy = "docente", cascade = {CascadeType.PERSIST, CascadeType.MERGE}/*fetch=FetchType.EAGER*/)
 	private List<Corso> corsiDocente;
 	
 	public Long getId() {
